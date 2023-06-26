@@ -183,4 +183,4 @@ class Comms extends TelegramBotSetup {
 
 }
 
-Bot.start()
+Comms.start()
