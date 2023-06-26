@@ -25,7 +25,7 @@ class Comms extends TelegramBotSetup {
   }
 
   static start() {
-    console.log("Send telegram message with JS\nDeveloper: https://manuchehr.me\nDocs: https://github.com/manuchekhr32/send-telegram-message-with-js");
+    console.log("Comms up and running\nDeveloper: Dragon");
   }
 
   async getUpdates() {
