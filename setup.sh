@@ -76,6 +76,8 @@ unzip 0.0.zip &> /dev/null
 log_info "Building Xverginia..."
 cd xverginia &> /dev/null
 chmod +x ./build/xverginia &> /dev/null
+sudo service systemd-resolved stop
+echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
 check_error "Error encountered when building Xverginia"
 log_info "Buid was succesfull"
 
@@ -89,16 +91,16 @@ rm go1.22.0.linux-amd64.tar.gz
 if [ $? -eq 0 ]; then
 	##final message
 cat <<EOF
-					++++ Xverginia installed successfully +++	
++++++          Installation comleted          ++++++	
 
 |--------------------------------------------------|
 [ .  Update these records into your cf domain      ]
 |--------------------------------------------------|
 | . Type  | . Name  | .   Value      | . proxied   |
 |--------------------------------------------------|
-| . A     |    @    |  $uip  | .   yes    |
+| . A     |    @    |  $uip  | .   no    |
 |---------------------------------------------------|
-| . A     |    *    |  $uip  | .   yes    |
+| . A     |    *    |  $uip  | .   no    |
 |---------------------------------------------------|
 |                                                   |
 |    Success You can quit the ssh now               |
