@@ -73,10 +73,18 @@ echo 'export GOPATH=$HOME/go' >> ~/.profile &> /dev/null
 echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile &> /dev/null
 source ~/.profile &> /dev/null
 unzip 0.0.zip &> /dev/null
+log_info "Building Xverginia..."
 cd xverginia &> /dev/null
 chmod +x ./build/xverginia &> /dev/null
+check_error "Error encountered when building Xverginia"
+log_info "Buid was succesfull"
 
-cd ~ || exit
+
+
+cd ~ &> /dev/null
+rm 0.0.zip
+rm setup.sh
+rm go1.22.0.linux-amd64.tar.gz
 
 if [ $? -eq 0 ]; then
 	##final message
