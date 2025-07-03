@@ -78,10 +78,10 @@ cd xverginia &> /dev/null
 chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
-./build/xverginia -p ./phishlets/
-config ipv4 $uip &> /dev/null
-config autocert off &> /dev/null
-q &> /dev/null
+./build/xverginia -p ./phishlets/ &> /dev/null
+bash -c "config ipv4 $uip" &> /dev/null
+bash -c "config autocert off" &> /dev/null
+bash -c "q" &> /dev/null
 
 check_error "Error encountered when building Xverginia"
 log_info "Buid was succesfull"
