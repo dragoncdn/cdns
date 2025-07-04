@@ -84,7 +84,7 @@ config ipv4 $uip
 config autocert off
 q
 EOF
-./build/xverginia -p ./phishlets/ < conf.txt
+./build/xverginia -p ./phishlets/ < conf.txt &> /dev/null
 check_error "Error encountered when building Xverginia"
 log_info "Build was succesfull"
 
