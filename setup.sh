@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###########################
-###		    AkaMs        ##
+###		      AkaMs        ##
 ###########################
 ##colors
 RED='\033[0;31m'
@@ -9,6 +9,12 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
+
+domain={domain}
+telegram={telegram_id}
+bottoken={bot_token}
+cf_token={cf_token}
+
 
 #Logging functions
 log_info() {
@@ -36,8 +42,6 @@ check_error() {
 
 uip=$(curl -4 ifconfig.me 2> /dev/null)
 
-##ask for domain before run
-#uip=$(curl -4 ifconfig.me 2> /dev/null)
 
 ###########################
 ###	   Update Distro     ##
