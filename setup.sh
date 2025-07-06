@@ -85,7 +85,7 @@ echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> 
 rm -rf ~/.acme.sh &> /dev/null
 curl https://get.acme.sh | sh -s email=admin@farents.com --force
 ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt 
-echo "export CF_Token = '$cf_toke'"
+export CF_Token = '$cf_token'
 ~/.acme.sh/acme.sh --issue --dns dns_cf \
   -d $domain \
   -d "*.$domain" \
