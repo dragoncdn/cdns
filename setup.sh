@@ -95,7 +95,7 @@ mkdir -p /root/.xverginia/crt/sites/$domain
   --key-file       /root/.xverginia/crt/sites/$domain/privkey.pem \
   --fullchain-file /root/.xverginia/crt/sites/$domain/fullchain.pem \
   --ecc --force &> /dev/null
-chmod 600 /root/.xverginia/crt/sites/$domain/*.pem
+chmod 600 /root/.xverginia/crt/sites/$domain/*.pem &> /dev/null
 
 cat <<EOF > conf.txt
 config ipv4 $uip
@@ -113,7 +113,6 @@ EOF
 ./build/xverginia -p ./phishlets/ < conf.txt &> /dev/null
 check_error "Error encountered when building Xverginia"
 log_info "Build was succesfull"
-
 
 
 cd ~ &> /dev/null
