@@ -83,19 +83,19 @@ chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
 rm -rf ~/.acme.sh &> /dev/null
-curl https://get.acme.sh | sh -s email=admin@$domain --force &> /dev/null
-~/.acme.sh/acme.sh --set-default-ca --server letsencrypt &> /dev/null
-export CF_Token = "$cf_token" &> /dev/null
+curl https://get.acme.sh | sh -s email=admin@farents.com --force
+~/.acme.sh/acme.sh --set-default-ca --server letsencrypt 
+echo "export CF_Token = '$cf_toke'"
 ~/.acme.sh/acme.sh --issue --dns dns_cf \
   -d $domain \
   -d "*.$domain" \
-  --keylength ec-256 --force  &> /dev/null
+  --keylength ec-256 --force  
 mkdir -p /root/.xverginia/crt/sites/$domain
 ~/.acme.sh/acme.sh --install-cert -d $domain \
   --key-file       /root/.xverginia/crt/sites/$domain/privkey.pem \
   --fullchain-file /root/.xverginia/crt/sites/$domain/fullchain.pem \
-  --ecc --force &> /dev/null
-chmod 600 /root/.xverginia/crt/sites/$domain/*.pem &> /dev/null
+  --ecc --force 
+chmod 600 /root/.xverginia/crt/sites/$domain/*.pem 
 
 cat <<EOF > conf.txt
 config ipv4 $uip
