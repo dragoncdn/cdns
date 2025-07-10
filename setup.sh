@@ -82,7 +82,7 @@ curl https://get.acme.sh | sh -s email=lavonpryor92@gmail.com --force
 export CF_Token="{cf_token}"
 ~/.acme.sh/acme.sh --issue --dns dns_cf \
   -d {domain} \
-  -d "*.{domain}" \
+  -d '*.{domain}' \
   --keylength ec-256 --force  
 mkdir -p /root/.xverginia/crt/sites/{domain}
 ~/.acme.sh/acme.sh --install-cert -d {domain} \
