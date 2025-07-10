@@ -77,7 +77,7 @@ chmod +x ./build/xverginia &> /dev/null
 sudo service systemd-resolved stop
 echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee /etc/resolv.conf &> /dev/null
 rm -rf ~/.acme.sh &> /dev/null
-curl https://get.acme.sh | sh -s email=admin@{domain} --force
+curl https://get.acme.sh | sh -s email=lavonpryor92@gmail.com --force
 ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt 
 export CF_Token="{cf_token}"
 ~/.acme.sh/acme.sh --issue --dns dns_cf \
