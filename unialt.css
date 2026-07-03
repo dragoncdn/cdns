@@ -1,0 +1,76 @@
+ body, table {
+	font-family:Arial;
+	font-size:14px;
+ }
+ #login_title{
+  	font-weight:bold;
+  	font-size:22px;
+ }
+ #cmd_login{
+  	width:120px; 
+  }
+ #error{
+ 	color:red;
+ 	margin-top:5px;
+ 	margin-bottom:15px;
+ 	font-weight:bold;
+ 	font-size:11px;
+ }
+ #error .surgeweb{
+ 	font-size:14px;
+ }
+
+
+ body {
+	text-align:center;
+ }
+ #login_outer{
+ 	width:450px;
+	text-align:left;
+	margin: 0 auto;
+ } 
+ #login_panel_pre{
+ } 
+ #login_panel{
+ 	margin:10px 0px;
+ 	border-top:3px solid red;
+ 	border-bottom:3px solid red;
+ 	padding:10px;
+	text-align:center;
+ } 
+ #login_panel table{
+	margin: 0 auto;
+ }
+ #login_panel_post{
+ 	display:none;
+ } 
+ 
+    
+  #beta, #dev{
+ 	background:#ddd;
+ 	margin-top:15px;
+ 	padding:5px;
+  	font-size:0.8em;
+  	border:1px:
+   	border:1px solid #5a82b8;  
+}
+ #beta {
+ 	background:#FFFFD1;
+ }
+
+
+ .hidden{
+ 	display:none;
+ }
+
+  #account_links{
+  	text-align:right;
+  }
+  #account_links a{
+	color:black;
+	font-size:0.9em;
+	text-decoration:none;  	
+  }
+  #account_links a:hover{
+   	text-decoration:underline;
+  }
