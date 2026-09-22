@@ -1,0 +1,73 @@
+body { background: #4d4d4d; overflow: auto !important;}
+.box-inner { background: white; width: 480px; padding: 30px 38px 48px 38px; }
+#login-logo { width: 480px; margin-bottom: 20px; margin-top: 40px; }
+/* default login logo is vector */
+#login-logo object { display: block; margin-left: auto; margin-right: auto; }
+
+/* custom login logos are raster */
+#login-logo img { display: block; margin-left: auto; margin-right: auto; }
+#login-logo img.small { display: none; }
+
+/* for old mobile UI */
+#mobiletest { display: none; }
+
+.box-inner .table td { border: none; }
+.box-inner p { margin-bottom: 0; padding-left: 10px; margin-top: 3px; }
+.input-group-prepend { display: none; }
+table#loginform .input-group { flex-wrap: unset; }
+div#login-form { margin-left: auto; margin-right: auto; width: 480px; max-width: 480px; position: unset; }
+#login-form form .formbuttons button { margin-left: auto; margin-right: auto; display: block; height: 40px; width: 200px; font-size: 18px; }
+.table td.pair-top { padding-bottom: 0; }
+.table td.pair-bottom { padding-top: 0; }
+.spacer-bottom { padding-bottom: 13px; }
+.box-bottom { margin-left: auto; margin-right: auto; width: 480px; }
+#message .alert, #message2 .alert { border-radius: 0; }
+#message .ui.alert, #message2 .ui.alert { background-color: #EC1313; color: white; justify-content: center; }
+#message .ui.alert.alert-warning, #message2 .ui.alert.alert-warning { background-color: #EC1313; }
+#message .ui.alert.alert-info, #message2 .ui.alert.alert-info { background-color: darkgrey; }
+#message .ui.alert.alert-warning > i.icon:before, #message2 .ui.alert.alert-warning > i.icon:before { color: white; }
+#message .ui.alert.alert-info > i.icon:before, #message2 .ui.alert.alert-info > i.icon:before { color: white; }
+.pwrecover { margin-top: 20px; padding-left: 0.75rem; }
+#loginform .input-group>.form-control { border-radius: 3px; height: 32px; }
+#loginmodal .input-group>.form-control { border-radius: 3px; height: 32px; }
+
+#login-form .modal_underlay { position: fixed; top: 0; left: 0; height: 100%; width: 100%; z-index: 10; background: black; opacity: 0.5; }
+#login-form .modal { position: fixed; z-index: 20; background: white; width: 448px; padding: 22px 38px 48px 38px; top: 120px; display: block; height: 234px; left: auto; margin-left: -22px; }
+#login-form .modalheader { position: fixed; z-index: 20; background: white; color:black; width: 448px; height: 70px; top: 50px; font-size: 20px; left: auto; margin-left: -22px; }
+#login-form .modalheader center { margin-top: 40px; }
+table#loginmodal { margin-bottom: 40px; }
+#login-form .modalmessage { position: fixed; z-index: 20; background: white; width: 448px; margin-left: -22px; top: 354px; }
+
+/* for IE/edge/safari */
+#loginform .input-group>.form-control { width: 100%; }
+
+/* for IE */
+div#login-form { top: 0px; }
+
+@media only screen and (max-width: 768px) {
+  #mobiletest { display: inline-block; height: 1px; width:1px; }
+}
+
+@media only screen and (max-width: 490px) {
+  #mobiletest { display: inline-block; height: 1px; width:1px; }
+  body { background: white; overflow: auto !important; }
+  #login-logo { width: 100%; background: #4d4d4d; margin-top: 0; margin-bottom: 10px; padding: 13px 0 13px 0; position: fixed; top:0px; margin: 0; }
+  div#login-form { width: 100%; max-width: 100%; margin: 0; top: 0; }
+  .box-inner { width: 100%; padding: 10px 10px 0 10px; margin-top: 30px; }
+  .spacer-bottom { padding-bottom: 5px; }
+  .box-bottom { margin-left: auto; margin-right: auto; width: 480px; }
+  .pwrecover { margin-top: 10px; margin-bottom: 10px; }
+  table#loginform td { padding-bottom: 0px; }
+  #message { position: fixed; bottom: 0; width: 100%; }
+  #login-form .modalmessage { position: fixed; bottom: 0; width: 100%; margin-left: 0; top: auto; }
+  #login-form .modalheader { margin-left: 0; }
+  #login-form .modalheader center { width: 90%; white-space: normal; }
+  #login-form #loginmodal td.pair-top { width: 100%; }
+  #login-form #loginmodal td.pair-bottom input { width: 250px; }
+  #login-form .modal { width: 100%; margin-left: 0; top: 150px; padding: 0; }
+  #login-form .modalheader.ui-dialog button { display: block !important; }
+  #login-logo object { height: 18px; }
+  #login-logo img.small { display: block; }
+  #login-logo img.large { display: none; }
+  #login-logo img.resize { height: 18px; }
+}
